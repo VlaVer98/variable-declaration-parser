@@ -1,0 +1,43 @@
+     bool     asd222222   ; 
+
+int ssqwe;
+char wqbbbb4;
+signed  aas123;  char   cccd;
+         unsigned        char _ddd2;
+wchar_t     _eee;
+      char16_t ffff,
+  w ,         e2, sadas,
+  hhhj, lkk;
+char32_t Gg2g2,
+         qwe;
+short s;
+
+
+short int si2ss;
+signed short int ssi;
+signed short sss;
+unsigned short sswww;
+unsigned short int usi;
+int i;
+signed int si;
+signed s2;
+unsigned int ui;
+unsigned u;
+long l;
+long int li;
+signed long int sli;
+signed long sl;
+unsigned long ul;
+unsigned long int uli;
+long long ll;
+long long int lli;
+signed long long int slli;
+signed long long sll;
+unsigned long long ull;
+unsigned long long int ulli;
+float f;
+double d2;
+long double ld;
+int aaa3,bb2, c1;
+int wsadas;      int ere;
+int sdsd;     long ssssss;
