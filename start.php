@@ -51,11 +51,14 @@ $pattern = "
                 \s*?
                 (?<name_variable>
                     [a-zA-Z_][a-zA-Z0-9_]*?
-                )(?<!asm|auto|bool|break|casecatch|char|class|const|const_cast|continue|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|false|float|for|friend|goto|inline|int|long|mutable|namespace|new|operator|private|protected|public|register|reinterpret_cast|return|short|signed|sizeof|static|static_cast|short|short|signed|sizeof|static|static_cast|struct|switch|template|this|throw|typedef|true|try|typeid|typename|union|voidunion|using|virtual|void)
+                    (:?
+                        \[\d*?\]
+                    )*?
+                )(?<![\s,]asm|[\s,]auto|[\s,]bool|[\s,]break|[\s,]casecatch|[\s,]char|[\s,]class|[\s,]const|[\s,]const_cast|[\s,]continue|[\s,]default|[\s,]delete|[\s,]do|[\s,]double|[\s,]dynamic_cast|[\s,]else|[\s,]enum|[\s,]explicit|[\s,]export|[\s,]extern|[\s,]false|[\s,]float|[\s,]for|[\s,]friend|[\s,]goto|[\s,]inline|[\s,]int|[\s,]long|[\s,]mutable|[\s,]namespace|[\s,]new|[\s,]operator|[\s,]private|[\s,]protected|[\s,]public|[\s,]register|[\s,]reinterpret_cast|[\s,]return|[\s,]short|[\s,]signed|[\s,]sizeof|[\s,]static|[\s,]static_cast|[\s,]short|[\s,]short|[\s,]signed|[\s,]sizeof|[\s,]static|[\s,]static_cast|[\s,]struct|[\s,]switch|[\s,]template|[\s,]this|[\s,]throw|[\s,]typedef|[\s,]true|[\s,]try|[\s,]typeid|[\s,]typename|[\s,]union|[\s,]voidunion|[\s,]using|[\s,]virtual|[\s,]void)
                 \s*?[,;]\s*?
             )+?(?<=;)
         )
-    )(?: \s*?|\c*?)
+    )(?: \s*|\c*)
 /x";
 
 $out =  preg_split($pattern ,$str, -1, PREG_SPLIT_NO_EMPTY|PREG_SPLIT_OFFSET_CAPTURE);
@@ -74,10 +77,9 @@ if(empty($out)) {
 function getLineAndPosOfError($str, $posErr) {
     $str = mb_strimwidth($str, 0, $posErr);
     $arr = explode("\n", $str);
-
     return [
         'line' => count($arr),
-        'pos' => iconv_strlen(end($arr))
+        'pos' => iconv_strlen(end($arr)) ?: 1
     ];
 }
 
